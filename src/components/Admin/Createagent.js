@@ -1,8 +1,21 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import TicketContext from "../../contexts/TicketContext";
+import { useNavigate } from "react-router-dom";
 
 const Createagent = (props) => {
     
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem("token") && localStorage.getItem("type") === "admin") {
+      console.log("ok");
+    } else {
+      navigate("/login");
+    }
+    // eslint-disable-next-line
+  }, []);
+
+
     const context = useContext(TicketContext);
     const { addUser } = context;
 

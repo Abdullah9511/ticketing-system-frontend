@@ -9,10 +9,13 @@ const AgentTickets = (props) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!localStorage.getItem("token")) {
+    if (localStorage.getItem("token") && localStorage.getItem("type") === "admin") {
+      console.log("ok");
+    } else {
       navigate("/login");
     }
-  }, [navigate]);
+    // eslint-disable-next-line
+  }, []);
 
   const handleNameSubmit = (e) => {
     e.preventDefault(); // Prevent the default form submission behavior
